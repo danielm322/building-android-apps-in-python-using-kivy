@@ -12,21 +12,7 @@ BoxLayout:
                 origin: root.width/2, root.height/2
         canvas.after:
             PopMatrix:
-    TextInput:
-        text: "192.168.0.255"
-        id: ip_address
-        size_hint_y: 1
-    TextInput:
-        text: "6666"
-        id: port_number
-        size_hint_y: 1
     Button:
-        id: capture
         text: "Capture"
         size_hint_y: 1
         on_press: app.capture()
-    Button:
-        id: cam_size
-        text: "Configure Server"
-        size_hint_y: 1
-        on_press: app.cam_size()

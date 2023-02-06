@@ -1,0 +1,65 @@
+BoxLayout:
+# Using PushMatrix and PopMatrix:
+    Button:
+        text: "Rotate this Button"
+        canvas.before:
+            PushMatrix:
+            Rotate:
+                angle: 45
+                origin: root.width/2, root.height/2
+        canvas.after:
+            PopMatrix:
+    Label:
+        text: "Do not Rotate this Label"
+
+
+
+# Rotation and usage of canvas.before
+#    Label:
+#        text: "Do not Rotate this Label"
+#    Button:
+#        text: "Rotate this Button"
+#        canvas.before:
+#            Rotate:
+#                angle: 45
+#                origin: root.width/2, root.height/2
+#    Label:
+#        text: "Do not Rotate this Label"
+#        canvas.before:
+#            Rotate:
+#                angle: -45
+#                origin: root.width/2, root.height/2
+
+
+
+
+
+
+
+
+# Two rectangles
+#    Label:
+#        canvas:
+#            Color:
+#                rgb: 1, 0, 0
+#            Rectangle:
+#                pos: root.pos
+#                size: 200, 200
+#    Label:
+#        canvas:
+#            Color:
+#                rgb: 0, 1, 0
+#            Rotate:
+#                angle: -45
+#                axis: 0,0,1
+#                origin: root.width/2, root.height/2
+#            Rectangle:
+#                pos: root.width/2, root.height/2
+#                size: 200,200
+
+
+
+#Camera usage
+    #Camera:
+    #    resolution: 1280,720
+    #    play: True

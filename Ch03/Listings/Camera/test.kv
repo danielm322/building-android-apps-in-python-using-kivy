@@ -1,0 +1,13 @@
+BoxLayout:
+    Camera:
+        resolution: 1280, 720
+        play: True
+        canvas.before:
+            PushMatrix:
+            Rotate:
+                #angle=-90 for android devices
+                angle: -90
+                axis: 0,0,1
+                origin: root.width/2, root.height/2
+        canvas.after:
+            PopMatrix:
