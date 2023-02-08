@@ -1,26 +1,32 @@
-from os import getcwd
+# from os import getcwd  # PC
 import requests
 from kivy.app import App
+# import time
+
+from kivy.utils import platform
+if platform == "android":
+    from android.permissions import request_permissions, Permission
+    request_permissions([Permission.CAMERA])
 
 
 class PycamApp(App):
     def capture(self):
         camera = self.root.ids['camera']
-        im_path = getcwd()
+        # time_str = time.strftime("%Y%m%d_%H%M%S")
+        im_path = '/storage/emulated/0'  # Android
+        # im_path = getcwd()  # PC
+        # im_name = f'/captured_image_kivy_{time_str}.png'
         im_name = '/captured_image_kivy.png'
         camera.export_to_png(im_path + im_name)
+        ip_addr = self.root.ids['ip_address'].text
+        url = 'http://' + ip_addr + ':6666/'
         files = {'media': open(im_path + im_name, 'rb')}
         try:
             self.root.ids['capture'].text = "Trying to Establish a Connection..."
-            requests.post('http://192.168.0.12:6666/', files=files)
+            requests.post(url, files=files)
             self.root.ids['capture'].text = "Capture Again!"
         except requests.exceptions.ConnectionError:
             self.root.ids['capture'].text = "Connection Error! Make Sure Server is Active."
-    
-    # def capture(self):
-    #     camera = self.root.ids["camera"]
-    #     camera.export_to_png("./captured_image_kivy.png")  # PC
-    #     # camera.export_to_png("/storage/emulated/0/captured_image_kivy.png")  # Android
 
     def build(self):
         pass
