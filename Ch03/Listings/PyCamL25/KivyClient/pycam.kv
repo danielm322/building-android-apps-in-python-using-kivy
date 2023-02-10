@@ -1,0 +1,12 @@
+BoxLayout:
+    orientation: "vertical"
+    Camera:
+        id: camera
+        size_hint_y: 18
+        resolution: (1280, 720)
+        play: True
+    Button:
+        id: capture
+        text: "Capture"
+        size_hint_y: 1
+        on_press: app.capture()
